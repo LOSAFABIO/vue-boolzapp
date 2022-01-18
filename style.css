@@ -1,0 +1,97 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.my_h{
+    height: 100%;
+}
+
+.my_h90{
+    height: 90%;
+}
+
+.my_w{
+    width: 100%;
+}
+
+.my_w90{
+    width: 90%;
+}
+
+.intestazione{
+    height: 120px;
+}
+
+.intestazione_chat{
+    height: 70px;
+    width: 100%;
+}
+
+.corpo_chat{
+    height: 560px;
+    width: 100%;
+    background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png);
+}
+
+.corpo_contatti{
+    height: 500px;
+    width: 100%;
+}
+
+.notifiche_contatti{
+    height: 90px;
+    width: 100%;
+    background-color: rgb(133, 208, 233);
+}
+
+.cerca_contatti{
+    height: 40px;
+    width: 100%;
+}
+
+.mybg_lightgrey{
+    background-color: rgb(235, 235, 235);
+}
+
+.cerca_contatti_h{
+    height: 70%;
+}
+
+.input_text{
+    width: 80%;
+}
+
+i{
+    font-size: 25px;
+}
+
+.my_w50p{
+    width: 50px;
+}
+
+.my_h70p{
+    height: 70px;
+}
+
+.messaggio_forma{
+    height: 100px;
+    max-width: 550px;
+    width: 250px;
+    color: black;
+}
+
+.messaggio_inviato{
+    display: flex;
+    justify-content: end;
+    background-color: green;
+
+}
+
+.messaggio_ricevuto{
+    display: flex;
+    justify-content: start;
+    background-color: white;
+
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div id="myApp">
+
+        <header>
+            <div class="container-fluid intestazione">
+
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                <div class="row my_heightpag m-auto">
+                    <div class="col-4 border border-end-0 p-0 my_h">
+                        <div class="row flex-column m-auto my_h">
+                            <div class="col-1 mybg_lightgrey intestazione_chat d-flex justify-content-start align-items-center">
+                                <img src="https://dt2sdf0db8zob.cloudfront.net/wp-content/uploads/2019/12/9-Best-Online-Avatars-and-How-to-Make-Your-Own-for-Free-image1-5.png" class="rounded-pill my_w50p" alt="">
+                                <span class="mx-2">Fabio Losa</span>
+                            </div>
+                            <div class="col-2 notifiche_contatti d-flex justify-content-start align-items-center">
+                                <i class="fa-solid fa-bell-slash"></i>
+                                <span class="mx-2">Ricevi notifiche di nuovi messaggi
+                                    <br>
+                                    Attiva notifiche testo
+                                </span>
+                            </div>
+                            <div class="col-1 cerca_contatti d-flex justify-content-center align-items-center mybg_lightgrey">
+                                <i class="fa-regular fa-magnifying-glass"></i>  
+                                <input type="text" placeholder="Cerca o inizia una nuova chat" name="cercaContatti" id="cercaContatti" class="m-auto rounded-pill my_w90 cerca_contatti_h">
+                            </div>
+                            <div class="col-8 corpo_contatti">
+                                <div class="d-flex align-items-center" v-for="(contatto, indice1) in listaContatti">
+                                    <div @click="" class="my_h70p">{{contatto.avatar}}  {{contatto.name}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8 border p-0 my_h">
+                        <div class="row flex-column justify-content-between m-auto my_h">
+                            <div class="col-2 mybg_lightgrey intestazione_chat"></div>
+                            <div class="col-8 corpo_chat">
+                                <div class="messaggio_forma" v-for="(messaggio, indice2) in listaContatti">
+                                    <div class="my_h my_w" :src="messaggio.messages.text">{{messaggio.messages[text]}}</div>
+                                </div>
+                            </div>
+                            <div class="col-2 mybg_lightgrey intestazione_chat d-flex justify-content-center align-items-center">
+                                <div class="cols-row-4 d-flex justify-content-around align-items-center my_w my_h90">
+                                    <i class="fa-regular fa-face-grin"></i>
+                                    <i class="fa-thin fa-paperclip"></i>
+                                    <input  @keyup.enter="aggiungi()" type="text" placeholder="Scrivi un messaggio" name="cercaContatti" id="cercaContatti" class=" rounded-pill input_text cerca_contatti_h">
+                                    <i class="fa-regular fa-microphone"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+
+            </div>
+        </footer>
+        
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
+
