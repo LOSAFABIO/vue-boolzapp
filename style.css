@@ -12,6 +12,10 @@
     height: 90%;
 }
 
+.my_w100{
+    width: 100%;
+}
+
 .my_w{
     width: 100%;
 }
@@ -21,7 +25,7 @@
 }
 
 .intestazione{
-    height: 120px;
+    height: 50px;
 }
 
 .intestazione_chat{
@@ -30,12 +34,14 @@
 }
 
 .corpo_chat{
+    overflow-y: scroll;
     height: 560px;
     width: 100%;
     background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png);
 }
 
 .corpo_contatti{
+    overflow-y: scroll;
     height: 500px;
     width: 100%;
 }
@@ -71,27 +77,69 @@ i{
     width: 50px;
 }
 
-.my_h70p{
-    height: 70px;
+.my_h50p{
+    height: 50px;
+}
+
+.my_h100p{
+    height: 100px;
 }
 
 .messaggio_forma{
-    height: 100px;
-    max-width: 550px;
-    width: 250px;
-    color: black;
+    border-radius: 20px;
 }
 
-.messaggio_inviato{
-    display: flex;
-    justify-content: end;
+.sent{
     background-color: green;
-
+    margin: 20px 10px;  
+    padding:0 15px;
+    text-align: end; 
 }
 
-.messaggio_ricevuto{
-    display: flex;
-    justify-content: start;
+.received{
     background-color: white;
+    margin: 20px 10px; 
+    padding:0 15px;
+}
 
+.img_contatti{
+    height:70px;
+    margin:20px 0 ;
+}
+
+.tendina{
+    display: none;
+}
+
+.active{
+    display: block;
+}
+
+.my_margin30p{
+    margin-left: 30px;
+}
+
+.my_flex{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.my_marginleftright{
+    margin-right: 45px;
+    margin-left: 18px;
+}
+
+.my_span{
+    width: 320px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.lasttext{
+    font-size: 10px;
+    position: absolute;
+    bottom: -15px;
+    left: 19px;
 }

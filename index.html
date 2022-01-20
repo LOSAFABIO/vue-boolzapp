@@ -36,30 +36,72 @@
                                     Attiva notifiche testo
                                 </span>
                             </div>
-                            <div class="col-1 cerca_contatti d-flex justify-content-center align-items-center mybg_lightgrey">
+                            <div class="col-1 cerca_contatti d-flex align-items-center mybg_lightgrey">
                                 <i class="fa-regular fa-magnifying-glass"></i>  
-                                <input type="text" placeholder="Cerca o inizia una nuova chat" name="cercaContatti" id="cercaContatti" class="m-auto rounded-pill my_w90 cerca_contatti_h">
+                                <input type="text"  placeholder="Cerca o inizia una nuova chat" name="cercaContatti" id="cercaContatti" class="m-auto rounded-pill my_w90 cerca_contatti_h">
                             </div>
                             <div class="col-8 corpo_contatti">
-                                <div class="d-flex align-items-center" v-for="(contatto, indice1) in listaContatti">
-                                    <div @click="" class="my_h70p">{{contatto.avatar}}  {{contatto.name}}</div>
+                                <div 
+                                    class="d-flex align-items-center" 
+                                    v-for="(contatto, indice) in listaContatti">
+                                    <div 
+                                    @click="contatore = indice" 
+                                    class="my_h100p my_flex">
+                                        <img 
+                                            class="img_contatti rounded-pill"
+                                            :src="contatto.avatar" alt=""> 
+                                            <span class="my_span">
+                                                <span class="my_marginleftright">{{contatto.name}}</span>
+                                                <span class="my_margin30p">{{listaContatti[contatore].messages[contatore2].date}}</span>
+                                                <div class="lasttext">{{contatto.messages.at(-1).text}}</div>
+
+                                            </span>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-8 border p-0 my_h">
                         <div class="row flex-column justify-content-between m-auto my_h">
-                            <div class="col-2 mybg_lightgrey intestazione_chat"></div>
+                            <div class="col-2 mybg_lightgrey d-flex align-items-center intestazione_chat">
+                                    <img 
+                                    class="my_w50p my_h50p rounded-pill"
+                                    :src="listaContatti[contatore].avatar" alt=""> 
+                                    <div class="mx-2">
+                                        <span>{{listaContatti[contatore].name}}</span>
+                                        <p class="m-0">{{listaContatti[contatore].messages[contatore2].date}}</p>
+                                    </div>       
+                            </div>
                             <div class="col-8 corpo_chat">
-                                <div class="messaggio_forma" v-for="(messaggio, indice2) in listaContatti">
-                                    <div class="my_h my_w" :src="messaggio.messages.text">{{messaggio.messages[text]}}</div>
+                                <div 
+                                    :class="messaggio.status" 
+                                    class="messaggio_forma" 
+                                    v-for="(messaggio, indice) in listaContatti[contatore].messages">
+                                    <span class="my_h my_w">{{messaggio.text}}
+                                        <span :class="" class="dropdown">
+                                            <i 
+                                            :class=""
+                                            class="btn btn-default fa-solid fa-angle-down" type="button" id="menu1" data-toggle="dropdown"></i>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                                <li>Informazioni</li>
+                                                <li @click="listaContatti[contatore].messages.splice(indice, 1)">Elimina messaggio</li>
+                                            </ul>    
+                                        </span>    
+                                        <br> {{messaggio.date}}
+                                    </span>
                                 </div>
                             </div>
                             <div class="col-2 mybg_lightgrey intestazione_chat d-flex justify-content-center align-items-center">
                                 <div class="cols-row-4 d-flex justify-content-around align-items-center my_w my_h90">
                                     <i class="fa-regular fa-face-grin"></i>
                                     <i class="fa-thin fa-paperclip"></i>
-                                    <input  @keyup.enter="aggiungi()" type="text" placeholder="Scrivi un messaggio" name="cercaContatti" id="cercaContatti" class=" rounded-pill input_text cerca_contatti_h">
+                                    <input  
+                                        @keyup.enter="invioMessaggio" 
+                                        v-model="aggiungiMessaggio" 
+                                        type="text" placeholder="Scrivi un messaggio" 
+                                        name="invioMessaggio" id="invioMessaggio" 
+                                        class=" rounded-pill input_text cerca_contatti_h">
                                     <i class="fa-regular fa-microphone"></i>
                                 </div>
                             </div>
@@ -76,6 +118,7 @@
         </footer>
         
     </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/plugin/customParseFormat.min.js" integrity="sha512-nbPJ/ANJ1DCwUWGyfS+PY7RMysy5UnFyOzPTjzcphOuVbUqrukQAZ9kkNvTkPmItJRuuL5IqNufQTHPyxxpmig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="main.js"></script>
 

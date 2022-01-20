@@ -1,19 +1,13 @@
 let app = new Vue({
     el   : `#myApp`,
     data : {
-        // mioProfilo    : [
-        //     {
-        //         name: 'mioProfilo',
-        //         avatar: '_0',
-        //         visible: true,
-        //         messages:   [date = '10/01/2020 15:30:55']
-        //     },
-        // ],
-        contatore     : 0,
-        listaContatti : [
+        aggiungiMessaggio   : "",
+        contatore           : 0,
+        contatore2          : 0,
+        listaContatti       : [
             {
                 name: 'Michele',
-                avatar: '_1',
+                avatar: 'img/_1.jpg',
                 visible: true,
                 messages:   [
                         {
@@ -35,7 +29,7 @@ let app = new Vue({
             },
             {
                 name: 'Fabio',
-                avatar: '_2',
+                avatar: 'img/_2.jpg',
                 visible: true,
                 messages:   [
                         {
@@ -57,7 +51,7 @@ let app = new Vue({
             },
             {
                 name: 'Samuele',
-                avatar: '_3',
+                avatar: 'img/_3.jpg',
                 visible: true,
                 messages:   [
                         {
@@ -79,7 +73,7 @@ let app = new Vue({
             },
             {
                 name: 'Luisa',
-                avatar: '_4',
+                avatar: 'img/_4.jpg',
                 visible: true,
                 messages:   [
                         {
@@ -97,6 +91,43 @@ let app = new Vue({
         ]     
     },
     methods:{
+        inviato_ricevuto : function(indice){
+            
+            if( this.listaContatti[indice].messages[indice].status == `sent`){
+                return `messaggio_inviato`
+            } else {
+                return `messaggio_ricevuto`
+            }
+            
+        },
+            // contatto_chat : function(indice){
+            //     this.contatore = indice
+            // Non va piu, funziona nel modo con hmtl
+//su html @click="contatore = indice"
+        // },    
         
-    }
+        invioMessaggio: function(){
+            this.listaContatti[this.contatore].messages.push({
+                date: new Date(),
+                text: this.aggiungiMessaggio,
+                status: `sent`
+            }),
+            this.aggiungiMessaggio = "";
+            setTimeout(() => 
+                this.listaContatti[this.contatore].messages.push({
+                date: new Date(),
+                text: `Ok!`,
+                status: `received`
+                }), 2000)
+        },
+
+        // cercaUtente : function(indice){
+        //     this.listaContatti.name.filter()
+        // },
+
+        // menuTendina : function() {
+        //     return `active`,
+        // }
+        
+    }   
 })
