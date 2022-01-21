@@ -38,10 +38,11 @@
                             </div>
                             <div class="col-1 cerca_contatti d-flex align-items-center mybg_lightgrey">
                                 <i class="fa-regular fa-magnifying-glass"></i>  
-                                <input type="text"  placeholder="Cerca o inizia una nuova chat" name="cercaContatti" id="cercaContatti" class="m-auto rounded-pill my_w90 cerca_contatti_h">
+                                <input type="text" v-model="valoreMessaggio" @keyup="cercaUtente" placeholder="Cerca o inizia una nuova chat" name="cercaContatti" id="cercaContatti" class="m-auto rounded-pill my_w90 cerca_contatti_h">
                             </div>
                             <div class="col-8 corpo_contatti">
                                 <div 
+                                    :class="{none: !contatto.visible}"
                                     class="d-flex align-items-center" 
                                     v-for="(contatto, indice) in listaContatti">
                                     <div 
@@ -52,9 +53,8 @@
                                             :src="contatto.avatar" alt=""> 
                                             <span class="my_span">
                                                 <span class="my_marginleftright">{{contatto.name}}</span>
-                                                <span class="my_margin30p">{{listaContatti[contatore].messages[contatore2].date}}</span>
-                                                <div class="lasttext">{{contatto.messages.at(-1).text}}</div>
-
+                                                <span class="my_margin30p" v-if="contatto.messages.length> 0">{{contatto.messages.at(-1).date}}</span>
+                                                <div class="lasttext" v-if="contatto.messages.length> 0">{{contatto.messages.at(-1).text}}</div>
                                             </span>
 
                                     </div>
@@ -64,13 +64,14 @@
                     </div>
                     <div class="col-8 border p-0 my_h">
                         <div class="row flex-column justify-content-between m-auto my_h">
-                            <div class="col-2 mybg_lightgrey d-flex align-items-center intestazione_chat">
+                            
+                            <div  class="col-2 mybg_lightgrey d-flex align-items-center intestazione_chat">
                                     <img 
                                     class="my_w50p my_h50p rounded-pill"
                                     :src="listaContatti[contatore].avatar" alt=""> 
                                     <div class="mx-2">
                                         <span>{{listaContatti[contatore].name}}</span>
-                                        <p class="m-0">{{listaContatti[contatore].messages[contatore2].date}}</p>
+                                        <p class="m-0">{{listaContatti[contatore].messages.date}}</p>
                                     </div>       
                             </div>
                             <div class="col-8 corpo_chat">
@@ -79,11 +80,9 @@
                                     class="messaggio_forma" 
                                     v-for="(messaggio, indice) in listaContatti[contatore].messages">
                                     <span class="my_h my_w">{{messaggio.text}}
-                                        <span :class="" class="dropdown">
-                                            <i 
-                                            :class=""
-                                            class="btn btn-default fa-solid fa-angle-down" type="button" id="menu1" data-toggle="dropdown"></i>
-                                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                        <span class="dropdown">
+                                            <i @click="menuTendina(indice)"  class="btn btn-default fa-solid fa-angle-down" type="button" id="menu1" data-toggle="dropdown"></i>
+                                            <ul :class="{active: eliminato == indice}" class="dropdown-menu" role="menu" aria-labelledby="menu1">
                                                 <li>Informazioni</li>
                                                 <li @click="listaContatti[contatore].messages.splice(indice, 1)">Elimina messaggio</li>
                                             </ul>    
@@ -118,7 +117,7 @@
         </footer>
         
     </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/plugin/customParseFormat.min.js" integrity="sha512-nbPJ/ANJ1DCwUWGyfS+PY7RMysy5UnFyOzPTjzcphOuVbUqrukQAZ9kkNvTkPmItJRuuL5IqNufQTHPyxxpmig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="main.js"></script>
 

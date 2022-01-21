@@ -1,9 +1,11 @@
 let app = new Vue({
     el   : `#myApp`,
     data : {
+        valoreMessaggio     : "",
         aggiungiMessaggio   : "",
         contatore           : 0,
         contatore2          : 0,
+        eliminato           : "null",
         listaContatti       : [
             {
                 name: 'Michele',
@@ -106,28 +108,43 @@ let app = new Vue({
 //su html @click="contatore = indice"
         // },    
         
-        invioMessaggio: function(){
+        invioMessaggio: function(indiceContatore){
             this.listaContatti[this.contatore].messages.push({
-                date: new Date(),
+                date: dayjs().format("DD/MM/YYYY HH.mm.ss"),
                 text: this.aggiungiMessaggio,
                 status: `sent`
             }),
             this.aggiungiMessaggio = "";
-            setTimeout(() => 
-                this.listaContatti[this.contatore].messages.push({
-                date: new Date(),
+            let indiceContatto = this.contatore
+            setTimeout(() =>   
+                this.listaContatti[indiceContatto].messages.push({
+                date: dayjs().format("DD/MM/YYYY HH.mm.ss"),
                 text: `Ok!`,
                 status: `received`
                 }), 2000)
         },
 
-        // cercaUtente : function(indice){
-        //     this.listaContatti.name.filter()
+        cercaUtente : function(){
+            this.listaContatti.forEach(elemento => {
+               elemento.visible = elemento.name.toLowerCase().includes(this.valoreMessaggio.toLowerCase())
+               console.log(elemento.name)
+
+            }
+        )},
+
+        menuTendina : function(indice) {
+            this.eliminato = indice
+            if(this.eliminato == indice){
+                return `active`
+            } else
+            return `none`
+        },
+        
+        // menuTendinaClose : function(indice) {
+        //     if(this.eliminato = `active`){
+        //         this.eliminato = `none  `
+        //     }
         // },
 
-        // menuTendina : function() {
-        //     return `active`,
-        // }
-        
     }   
 })

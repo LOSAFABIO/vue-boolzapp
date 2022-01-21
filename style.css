@@ -107,8 +107,8 @@ i{
     margin:20px 0 ;
 }
 
-.tendina{
-    display: none;
+.none{
+    display: none!important;
 }
 
 .active{
@@ -140,6 +140,20 @@ i{
 .lasttext{
     font-size: 10px;
     position: absolute;
-    bottom: -15px;
+    bottom: -18px;
     left: 19px;
+}
+
+li{
+    cursor: pointer;
+    font-size: 12px;
+}
+
+ul{
+    text-align: center;
+    position: absolute;
+    right: 0;
+    font-size: 12px;
+    margin: 0 8px;
+    padding: 0;
 }
